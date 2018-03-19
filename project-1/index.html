@@ -4,10 +4,96 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>[A]nim[E]ntuzjaści</title>
+    <meta name="description" content="Blog na temat interesujących pozycji anime. Przedstawienie wybranych tytułów pozwalających na zagłębienie się w gatunek.">
+    <meta name="keywords" content="anime, blog">
+
     <link rel="stylesheet" href="./resources/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&amp;subset=latin-ext" rel="stylesheet">
+
+    <!--[if lt IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <![endif]-->
 </head>
 <body>
-    
+    <header>
+        <div class="logo">
+            <h1>[A]nim [E] ntuzjaści</h1>
+        </div>
+    </header>
+    <main id="content">
+        <header>
+            <h2>Lista wpisów</h2>
+            <navbar id="entries-nav">
+                <ul>
+                    <li><a href="#violet-evergarden">Violet Evergarden</a></li>
+                    <li><a href="#mahoutsukai-no-yome">Mahoutsukai no Yome</a></li>
+                    <li><a href="#mushi-shi">Mushi-Shi</a></li>
+                </ul>
+            </navbar>
+        </header>
+        <article class="blog-entry">
+            <h3 id="violet-evergarden">Violet Evergarden</h3>
+            <img src="resources/img/violet-evergarden-cover.jpg" alt="Violet Evergarden" class="cover">
+            <section class="entry-info">
+                <h4>Informacje</h4>
+                <p>Lorem, ipsum.</p>
+            </section>
+            <section class="entry-desc">
+                <h4>Opis</h4>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat corporis dolorem cupiditate, libero ut facilis a dolor, nihil mollitia inventore aperiam est voluptatum eligendi. Dolorem quam fugiat alias maiores voluptates! Et rem, dolorem voluptatibus repudiandae aliquam, necessitatibus nam, vitae quibusdam doloribus dicta odio repellat fuga tenetur saepe architecto ducimus excepturi alias molestiae explicabo est dolor ab quaerat pariatur. Voluptatibus, maiores!</p>
+            </section>
+        </article>
+        <article class="blog-entry">
+            <h3 id="mahoutsukai-no-yome">Mahoutsukai no Yome</h3>
+            <img src="resources/img/ancient-magus-bride-cover.jpg" alt="Mahoutsukai no Yome" class="cover">
+            <section class="entry-info">
+                <h4>Informacje</h4>
+                <p>Lorem, ipsum.</p>
+            </section>
+            <section class="entry-desc">
+                <h4>Opis</h4>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat corporis dolorem cupiditate, libero ut facilis a dolor, nihil mollitia inventore aperiam est voluptatum eligendi. Dolorem quam fugiat alias maiores voluptates! Et rem, dolorem voluptatibus repudiandae aliquam, necessitatibus nam, vitae quibusdam doloribus dicta odio repellat fuga tenetur saepe architecto ducimus excepturi alias molestiae explicabo est dolor ab quaerat pariatur. Voluptatibus, maiores!</p>
+            </section>
+        </article>
+        <article class="blog-entry">
+            <h3 id="mushi-shi">Mushi-Shi</h3>
+            <img src="resources/img/mushi-shi-cover.jpg" alt="Mushi-Shi" class="cover">
+            <section class="entry-info">
+                <h4>Informacje</h4>
+                <p>Lorem, ipsum.</p>
+            </section>
+            <section class="entry-desc">
+                <h4>Opis</h4>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat corporis dolorem cupiditate, libero ut facilis a dolor, nihil mollitia inventore aperiam est voluptatum eligendi. Dolorem quam fugiat alias maiores voluptates! Et rem, dolorem voluptatibus repudiandae aliquam, necessitatibus nam, vitae quibusdam doloribus dicta odio repellat fuga tenetur saepe architecto ducimus excepturi alias molestiae explicabo est dolor ab quaerat pariatur. Voluptatibus, maiores!</p>
+            </section>
+        </article>
+    </main>
+    <article id="contact">
+        <header>
+            <h2>Skontaktuj się z autorem</h2>
+            <p>Jeśli masz ochotę podyskutować, zaproponować temat wpisu lub nawiązać współpracę reklamową - zapraszam do kontaktu mailowego.</p>
+        </header>
+        <form action="" method="post">
+            <div>
+                <label for="name">Imię:</label>
+                <input type="text" name="user_name" id="name">
+            </div>
+            <div>
+                <label for="mail">E-mail:</label>
+                <input type="email" name="user_mail" id="mail">
+            </div>
+            <div>
+                <label for="msg">Wiadomość:</label>
+                <textarea name="user_message" id="msg" cols="30" rows="10"></textarea>
+            </div>
+            <div class="button">
+                <button type="submit">Wyślij swoją wiadomość</button>
+            </div>
+        </form>
+    </article>
+    <footer id="info">
+            Wszelkie prawa zastrzeżone &copy; 2018. Dzięki za wizytę!
+    </footer>
 </body>
 </html>

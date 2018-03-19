@@ -1,0 +1,25 @@
+body
+{
+    margin: 0px;
+    background-color: aliceblue;
+    color: #0f0f0f;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 17px;
+}
+
+.logo > h1
+{
+    font-size: 44px;
+    font-weight: 700;
+    color: darkblue;
+    text-align: center;
+    letter-spacing: 5px;
+}
+
+#info
+{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    padding: 20px;
+}
