@@ -33,11 +33,22 @@ body {
     margin: 0 auto;
 }
 
+.cover-img {
+    background-image: url("images/background.jpg");
+    background-origin: border-box;
+    background-position: top center;
+    background-size: 1920px;
+    background-repeat: no-repeat;
+    height: 1280px;
+    padding-top: 78px;
+    margin: 0 auto;
+}
+
 #page-header {
     border-bottom: 1px solid rgba(255, 255, 255, 0.24);
     width: 1723px;
     height: 120px;
-    margin: 78px auto;
+    margin: 0 auto;
 
     /* to fix whitespace problem for %width */
     font-size: 0px;
@@ -89,6 +100,7 @@ body {
 #caption {
     width: 735px;
     height: 667px;
+    margin-top: 250px;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
@@ -97,8 +109,9 @@ body {
 #caption > h1 {
     font-family: 'Playfair Display', serif;
     font-size: 140px;
+    line-height: 140px;
     font-weight: 400;
-    margin: 0;
+    margin: 20px 0;
 }
 
 #caption > p {
@@ -116,24 +129,25 @@ body {
     border-radius: 50%;
     border-style: solid;
     border-color: #ffffff;
-    width: 82px;
-    height: 82px;
-    padding: 0 0 0 10px;
+    display: inline-block;
     font-family: Georgia, serif;
     font-size: 42px;
     line-height: 42px;
-    display: inline-block;
     text-decoration: none;
     text-align: center;
+    width: 82px;
+    height: 82px;
+    padding: 0 0 0 10px;
+    margin-top: 33px;
     cursor: pointer;
 
     -webkit-transition-duration: 0.4s;
     transition-duration: 0.4s;
 }
 
-#play-btn:hover {
+#play-btn:hover, #play-btn:focus {
     background-color: #ffffff;
-    color: #000000;
+    color: #565656;
 }
 
 .row-item {
