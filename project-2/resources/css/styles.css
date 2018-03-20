@@ -85,3 +85,53 @@ body {
     padding-right: 20px;
     margin: 0;
 }
+
+#caption {
+    width: 735px;
+    height: 667px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+#caption > h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 140px;
+    font-weight: 400;
+    margin: 0;
+}
+
+#caption > p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 34px;
+    padding: 0 91px;
+    margin: 0;
+}
+
+#play-btn {
+    background-color: rgba(0, 227, 254, 0);
+    color: #ffffff;
+    border-radius: 50%;
+    border-style: solid;
+    border-color: #ffffff;
+    width: 82px;
+    height: 82px;
+    padding: 0 0 0 10px;
+    font-family: Georgia, serif;
+    font-size: 42px;
+    line-height: 42px;
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+}
+
+#play-btn:hover {
+    background-color: #ffffff;
+    color: #000000;
+}
