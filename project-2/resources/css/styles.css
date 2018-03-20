@@ -135,3 +135,43 @@ body {
     background-color: #ffffff;
     color: #000000;
 }
+
+.row-item {
+    display: block;
+    background-repeat: no-repeat;
+    width: 480px;
+    height: 500px;
+    text-align: center;
+    padding-top: 330px;
+    float: left;
+}
+
+.img-1 {
+    background-image: url("images/row-img-1.jpg");
+}
+
+.img-2 {
+    background-image: url("images/row-img-2.jpg");
+}
+
+.img-3 {
+    background-image: url("images/row-img-3.jpg");
+}
+
+.img-4 {
+    background-image: url("images/row-img-4.jpg");
+}
+
+.row-item > h2, .row-item > p {
+    font-size: 18px;
+    line-height: 30px;
+    margin: 0 14px;
+}
+.row-item > h2 {
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.row-item > p {
+    font-style: italic;
+}
