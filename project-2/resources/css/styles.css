@@ -161,6 +161,8 @@ body {
     text-transform: uppercase;
     letter-spacing: 2px;
     display: block;
+    position: relative;
+    z-index: 1;
     height: 46px;
     width: 163px;
     margin: 0 auto;
@@ -179,6 +181,16 @@ body {
     margin: 98px auto 0 auto;
 }
 
+/* horizontal line */
+.lines-container::before {
+    content: "";
+    border-top: #da7074 solid 1px;
+    position: absolute;
+    width: 100%;
+    top: 23px;
+    left: 0;
+}
+
 /* vertical lines */
 .lines-container::after {
     content: "";
@@ -192,17 +204,6 @@ body {
     width: 6px;
     left: calc(50% - 6px/2);
     top: 35%;
-}
-
-.line {
-    background-color: #da7074;
-    display: inline-block;
-    margin: 0;
-}
-
-.hline {
-    height: 1px;
-    width: 100%;
 }
 
 .play-button {
