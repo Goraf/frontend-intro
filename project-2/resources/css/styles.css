@@ -269,43 +269,50 @@ body {
     font-style: italic;
 }
 
-#page-footer > div {
+.page-footer-row {
     background-color: #ffffff;
     color: #000000;
     padding: 100px 197px 120px 197px;
 }
 
-.footer-col {
+.page-footer-row::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.page-footer-item {
     width: 365px;
     float: left;
     line-height: 26px;
     margin-right: 22px;
 }
 
-.footer-col:last-of-type {
+.page-footer-item:last-child {
     margin-right: 0;
 }
 
-.footer-col > h2 {
+.page-footer-item > h2 {
     color: #151515;
     font-size: 14px;
     text-transform: uppercase;
     margin: 15px 0;
 }
 
-.footer-col ul {
+.page-footer-item ul {
     list-style-type: none;
     padding: 0;
     margin: 0;
 }
 
-.footer-col p, .footer-col a {
+.page-footer-item p,
+.page-footer-item a {
     color: #565656;
     font-style: italic;
     margin: 0;
 }
 
-.footer-col a:hover {
+.page-footer-item a:hover {
     text-decoration: underline;
 }
 
