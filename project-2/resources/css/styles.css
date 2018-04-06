@@ -208,13 +208,13 @@ body {
     border-style: solid;
     border-color: #ffffff;
     border-width: 2px;
-    display: inline-block;
+    display: block;
     font-size: 42px;
     line-height: 42px;
     width: 82px;
     height: 82px;
     padding: 0 0 0 10px;
-    margin: 25px 0 0 0;
+    margin: 25px auto;
 
     -webkit-transition-duration: 0.4s;
     transition-duration: 0.4s;
