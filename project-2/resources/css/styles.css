@@ -202,7 +202,7 @@ body {
     top: 933px;
 }
 
-#play-btn {
+.play-button {
     background-color: rgba(0, 227, 254, 0);
     border-radius: 50%;
     border-style: solid;
@@ -220,7 +220,8 @@ body {
     transition-duration: 0.4s;
 }
 
-#play-btn:hover, #play-btn:focus {
+.play-button:hover,
+.play-button:focus {
     background-color: #ffffff;
     color: #565656;
 }
