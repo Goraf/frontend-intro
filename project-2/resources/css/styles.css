@@ -141,30 +141,33 @@ body {
 .button {
     border: none;
     color: #ffffff;
-    padding: 20px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-family: 'Montserrat', sans-serif;
     font-size: 14px;
-    margin: 4px 2px;
     cursor: pointer;
 }
 
-.central-btn {
+.menu-button {
+    padding: 20px;
+    margin: 4px 2px;
+}
+
+.main-button {
     background-color: #da7074;
-    border-radius: 40px;
+    border-radius: 23px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 2px;
-    padding: 18px 47px;
-    margin: 0 auto;
     display: block;
-    position: relative;
-    bottom: 30px;
+    height: 46px;
+    width: 163px;
+    margin: 0 auto;
 }
 
-.central-btn:hover, .central-btn:focus {
+.main-button:hover,
+.main-button:focus {
     background-color: #ffffff;
     color: #565656;
 }
