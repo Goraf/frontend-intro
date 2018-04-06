@@ -138,12 +138,6 @@ body {
     margin: 0;
 }
 
-#caption > section {
-    width: 449px;
-    height: 325px;
-    margin: 98px auto 0 auto;
-}
-
 .button {
     border: none;
     color: #ffffff;
@@ -175,6 +169,28 @@ body {
     color: #565656;
 }
 
+.lines-container {
+    position: relative;
+    width: 449px;
+    height: 325px;
+    margin: 98px auto 0 auto;
+}
+
+/* vertical lines */
+.lines-container::after {
+    content: "";
+    background-image: linear-gradient(#da7074, #da7074),
+                      linear-gradient(#da7074, #da7074);
+    background-repeat: no-repeat;
+    background-size: 1px 90%, 1px 90%;
+    background-position: left top, right bottom;
+    position: absolute;
+    height: 65%;
+    width: 6px;
+    left: calc(50% - 6px/2);
+    top: 35%;
+}
+
 .line {
     background-color: #da7074;
     display: inline-block;
@@ -184,22 +200,6 @@ body {
 .hline {
     height: 1px;
     width: 100%;
-}
-
-.vline {
-    height: 190px;
-    width: 1px;
-    position: absolute;
-}
-
-.vline:nth-of-type(2) {
-    left: 958px;
-    top: 913px;
-}
-
-.vline:nth-of-type(3) {
-    left: 963px;
-    top: 933px;
 }
 
 .play-button {
