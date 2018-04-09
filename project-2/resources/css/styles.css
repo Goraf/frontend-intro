@@ -62,18 +62,14 @@ body {
     font-size: 0px;
 }
 
-#logo {
+.logo {
     display: inline-block;
     width: 20%;
 }
 
-#logo > a {
-    display: block;
-    width: 38px;
+.logo img {
     height: 38px;
-    border-style: solid;
-    border-radius: 50%;
-    border-color: #ffffff;
+    width: 38px;
 }
 
 #top-nav {
