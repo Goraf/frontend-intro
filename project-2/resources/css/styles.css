@@ -47,8 +47,9 @@ body {
     background-position: top center;
     background-size: 1920px;
     background-repeat: no-repeat;
-    height: 1280px;
+    min-height: 1280px;
     padding-top: 78px;
+    padding-bottom: 5px;
     margin: 0 auto;
 }
 
@@ -109,31 +110,27 @@ body {
     width: 20%;
 }
 
-#caption {
-    width: 735px;
-    height: 667px;
-    margin-top: 250px;
+.module-intro {
+    margin-top: 220px;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
 }
 
-#caption > h1 {
+.module-intro > .title {
     font-family: 'Playfair Display', serif;
     font-size: 140px;
-    line-height: 140px;
     font-weight: 400;
-    margin: 20px 0;
     letter-spacing: normal;
 }
 
-#caption > p {
+.module-intro > p {
     font-family: 'Montserrat', sans-serif;
     font-size: 20px;
     font-weight: 300;
     line-height: 34px;
-    padding: 0 91px;
-    margin: 0;
+    max-width: 560px;
+    margin: 0 auto 95px auto;
 }
 
 .button {
@@ -178,7 +175,7 @@ body {
     position: relative;
     width: 449px;
     height: 325px;
-    margin: 98px auto 0 auto;
+    margin: 25px auto;
 }
 
 /* horizontal line */
@@ -218,7 +215,7 @@ body {
     width: 82px;
     height: 82px;
     padding: 0 0 0 10px;
-    margin: 25px auto;
+    margin: 0 auto;
 
     -webkit-transition-duration: 0.4s;
     transition-duration: 0.4s;
