@@ -6,12 +6,6 @@
     padding: 0;
 }
 
-.clearfix::after {
-    content: "";
-    display: table;
-    clear: both;
-}
-
 html {
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 14px;
@@ -217,7 +211,7 @@ a {
     line-height: 42px;
     width: 82px;
     height: 82px;
-    padding: 0 0 0 10px;
+    padding-left: 10px;
     margin: 0 auto;
 
     -webkit-transition-duration: 0.4s;
@@ -317,15 +311,12 @@ a {
 
 .page-footer-item ul {
     list-style-type: none;
-    padding: 0;
-    margin: 0;
 }
 
 .page-footer-item p,
 .page-footer-item a {
     color: #565656;
     font-style: italic;
-    margin: 0;
 }
 
 .page-footer-item a:hover {
