@@ -104,14 +104,9 @@ body {
     outline: solid 3px #ffffff;
 }
 
-#top-icons {
+.top-icons {
     display: inline-block;
     width: 20%;
-    font-size: 24px;
-}
-
-#top-icons > div {
-    float: right;
 }
 
 #caption {
@@ -153,8 +148,10 @@ body {
 }
 
 .menu-button {
-    padding: 20px;
-    margin: 4px 2px;
+    background-color: rgba(0, 227, 254, 0);
+    font-size: 24px;
+    float: right;
+    margin-left: 35px;
 }
 
 .main-button {
