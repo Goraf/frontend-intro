@@ -230,48 +230,58 @@ a {
     color: #565656;
 }
 
-.row-item {
-    display: block;
-    background-repeat: no-repeat;
-    width: 480px;
-    height: 500px;
-    text-align: center;
-    padding-top: 330px;
-    float: left;
+.module-cards {
+    /* to fix whitespace problem for %width */
+    font-size: 0;
 }
 
-.row-item:hover > h2 {
+.card {
+    display: inline-block;
+    position: relative;
+    width: 25%;
+    height: 500px;
+    text-align: center;
+}
+
+.card:focus img,
+.card:hover img {
+    opacity: 0.6;
+}
+
+.card:hover .title {
     text-decoration: underline;
 }
 
-.img-1 {
-    background-image: url("images/row-img-1.jpg");
+.card img {
+    width: 100%;
+    height: auto;
+    opacity: 1;
+    transition: .5s ease;
 }
 
-.img-2 {
-    background-image: url("images/row-img-2.jpg");
+.card .text-block {
+    position: absolute;
+    width: 100%;
+    top: 65%;
+    left: 50%;
+    -ms-transform: translate(-50%);
+    transform: translate(-50%);
 }
 
-.img-3 {
-    background-image: url("images/row-img-3.jpg");
-}
-
-.img-4 {
-    background-image: url("images/row-img-4.jpg");
-}
-
-.row-item > h2,
-.row-item > p {
+.card .title,
+.card .subtitle {
     font-size: 18px;
     line-height: 30px;
     margin: 0 14px;
 }
-.row-item > h2 {
+.card .title {
     font-weight: 600;
     text-transform: uppercase;
 }
 
-.row-item > p {
+.card .subtitle {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: 300;
     font-style: italic;
 }
 
