@@ -1,0 +1,332 @@
+@import url("../../vendors/fontello/css/font-awesome.css");
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 14px;
+    font-weight: 300;
+    color: #ffffff;
+}
+
+body {
+    background-color: #000000;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.page {
+    width: 1920px;
+    margin: 0 auto;
+}
+
+.cover-img {
+    background-image: url("images/background.jpg");
+    background-origin: border-box;
+    background-position: top center;
+    background-size: 1920px;
+    background-repeat: no-repeat;
+    min-height: 1280px;
+    padding-top: 78px;
+    padding-bottom: 5px;
+    margin: 0 auto;
+}
+
+.page-header {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.24);
+    width: 1723px;
+    height: 120px;
+    margin: 0 auto;
+
+    /* to fix whitespace problem for %width */
+    font-size: 0px;
+}
+
+.logo {
+    display: inline-block;
+    width: 20%;
+}
+
+.logo img {
+    height: 38px;
+    width: 38px;
+}
+
+.top-nav {
+    display: inline-block;
+    width: 60%;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.top-nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.top-nav li {
+    display: inline-block;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 0;
+}
+
+.top-nav a:hover {
+    border-bottom: 3px solid #ffffff;
+}
+
+.top-nav a:focus {
+    outline: solid 3px #ffffff;
+}
+
+.top-icons {
+    display: inline-block;
+    width: 20%;
+}
+
+.module-intro {
+    margin-top: 220px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.module-intro > .title {
+    font-family: 'Playfair Display', serif;
+    font-size: 140px;
+    font-weight: 400;
+    letter-spacing: normal;
+}
+
+.module-intro > p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 34px;
+    max-width: 560px;
+    margin: 0 auto 95px auto;
+}
+
+.button {
+    border: none;
+    color: #ffffff;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.menu-button {
+    background-color: rgba(0, 227, 254, 0);
+    font-size: 24px;
+    float: right;
+    margin-left: 35px;
+}
+
+.main-button {
+    background-color: #da7074;
+    border-radius: 23px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    display: block;
+    position: relative;
+    z-index: 1;
+    height: 46px;
+    width: 163px;
+    margin: 0 auto;
+}
+
+.main-button:hover,
+.main-button:focus {
+    background-color: #ffffff;
+    color: #565656;
+}
+
+.lines-container {
+    position: relative;
+    width: 449px;
+    height: 325px;
+    margin: 25px auto;
+}
+
+/* horizontal line */
+.lines-container::before {
+    content: "";
+    border-top: #da7074 solid 1px;
+    position: absolute;
+    width: 100%;
+    top: 23px;
+    left: 0;
+}
+
+/* vertical lines */
+.lines-container::after {
+    content: "";
+    background-image: linear-gradient(#da7074, #da7074),
+                      linear-gradient(#da7074, #da7074);
+    background-repeat: no-repeat;
+    background-size: 1px 90%, 1px 90%;
+    background-position: left top, right bottom;
+    position: absolute;
+    height: 65%;
+    width: 6px;
+    left: calc(50% - 6px/2);
+    top: 35%;
+}
+
+.play-button {
+    background-color: rgba(0, 227, 254, 0);
+    border-radius: 50%;
+    border-style: solid;
+    border-color: #ffffff;
+    border-width: 2px;
+    display: block;
+    font-size: 42px;
+    line-height: 42px;
+    width: 82px;
+    height: 82px;
+    padding-left: 10px;
+    margin: 0 auto;
+
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+}
+
+.play-button:hover,
+.play-button:focus {
+    background-color: #ffffff;
+    color: #565656;
+}
+
+.module-cards {
+    /* to fix whitespace problem for %width */
+    font-size: 0;
+}
+
+.card {
+    display: inline-block;
+    position: relative;
+    width: 25%;
+    height: 500px;
+    text-align: center;
+}
+
+.card:focus img,
+.card:hover img {
+    opacity: 0.6;
+}
+
+.card:hover .title {
+    text-decoration: underline;
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+    opacity: 1;
+    transition: .5s ease;
+}
+
+.card .text-block {
+    position: absolute;
+    width: 100%;
+    top: 65%;
+    left: 50%;
+    -ms-transform: translate(-50%);
+    transform: translate(-50%);
+}
+
+.card .title,
+.card .subtitle {
+    font-size: 18px;
+    line-height: 30px;
+    margin: 0 14px;
+}
+.card .title {
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.card .subtitle {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: 300;
+    font-style: italic;
+}
+
+.page-footer-row {
+    background-color: #ffffff;
+    color: #000000;
+    padding: 100px 197px 120px 197px;
+}
+
+.page-footer-row::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.page-footer-item {
+    width: 365px;
+    float: left;
+    line-height: 26px;
+    margin-right: 22px;
+}
+
+.page-footer-item:last-child {
+    margin-right: 0;
+}
+
+.page-footer-item > h2 {
+    color: #151515;
+    font-size: 14px;
+    text-transform: uppercase;
+    margin: 15px 0;
+}
+
+.page-footer-item ul {
+    list-style-type: none;
+}
+
+.page-footer-item p,
+.page-footer-item a {
+    color: #565656;
+    font-style: italic;
+}
+
+.page-footer-item a:hover {
+    text-decoration: underline;
+}
+
+.copyright {
+    color: #565656;
+    font-style: italic;
+    font-size: 12px;
+    text-align: center;
+    padding: 25px 0;
+}
