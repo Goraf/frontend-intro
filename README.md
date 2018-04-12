@@ -31,3 +31,7 @@ git clone <url> --branch <branch> --single-branch [<folder>]
 2. (master-2)
 
    Convert a .psd template into a webpage. (no responsiveness)
+
+3. (master-3)
+
+   Transform webpage from project-2 into responsive one.
