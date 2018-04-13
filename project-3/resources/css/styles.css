@@ -251,14 +251,70 @@ a {
     }
 }
 
-@media screen and (min-width: 600px) {
-    .card img {
-        width: 50vw;
-    }
-}
-
 .page-footer {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.page-footer-row {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.page-footer-item {
+    border-top: 1px solid grey;
+    font-size: 1.6rem;
+    line-height: 2.6rem;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-bottom: 15px;
+}
+
+.page-footer-item:first-child {
+    border-top: none;
+}
+
+.page-footer-item > h2 {
+    color: #151515;
+    font-size: 1.6rem;
+    text-transform: uppercase;
+    margin: 15px 0;
+}
+
+.mission > h2 {
+    text-align: center;
+}
+
+.page-footer-item ul {
+    list-style-type: none;
+}
+
+.page-footer-item ul > li {
+    line-height: 4.5rem;
+    border-bottom: 1px solid rgba(86, 86, 86, 0.5);
+}
+
+.page-footer-item ul > li:last-child {
+    border-bottom: none;
+}
+
+.page-footer-item p,
+.page-footer-item a {
+    color: #565656;
+    font-style: italic;
+}
+
+.copyright {
+    color: #565656;
+    font-style: italic;
+    font-size: 1.2rem;
+    line-height: 4.5rem;
+    text-align: center;
+}
+
+@media screen and (min-width: 600px) {
+    .card img {
+        width: 50vw;
+    }
 }
