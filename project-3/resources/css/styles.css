@@ -100,6 +100,39 @@ a {
     align-items: center;
 }
 
+.module-intro {
+    text-align: center;
+}
+
+.module-intro > .title {
+    font-family: 'Playfair Display', serif;
+    font-size: 13vw;
+    font-weight: 400;
+    letter-spacing: normal;
+}
+
+.module-intro > p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 300;
+    line-height: 2rem;
+    max-width: 560px;
+}
+
+@media screen and (min-width: 20rem) {
+    .module-intro > p {
+      font-size: calc(1.6rem + (2 - 1.6) * ((100vw - 20rem) / (80 - 20)));
+      line-height: calc(2rem + (3.3 - 2) * ((100vw - 20rem) / (80 - 20)));
+    }
+}
+
+@media screen and (min-width: 80em) {
+    .module-intro > p {
+        font-size: 2rem;
+        line-height: 3.3rem;
+    }
+}
+
 .card img {
     width: 100vmin;
     max-width: 480px;
