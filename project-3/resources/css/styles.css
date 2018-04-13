@@ -61,6 +61,9 @@ a {
     align-items: center;
     width: 90%;
     margin-top: 5px;
+    /* keep fixed icons on top */
+    position: relative;
+    z-index: 2;
 }
 
 .top-nav {
