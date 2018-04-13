@@ -117,12 +117,80 @@ a {
     font-weight: 300;
     line-height: 2rem;
     max-width: 560px;
+    margin-bottom: 15px;
+}
+
+.main-button {
+    background-color: #da7074;
+    border-radius: 2.3rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    display: block;
+    position: relative;
+    z-index: 1;
+    height: 4.6rem;
+    width: 16rem;
+    margin: 0 auto;
+}
+/*
+.main-button:hover,
+.main-button:focus {
+    background-color: #ffffff;
+    color: #565656;
+}
+*/
+.lines-container {
+    position: relative;
+    width: 90%;
+    max-width: 450px;
+    height: 325px;
+    margin-bottom: 25px;
+}
+
+/* horizontal line */
+.lines-container::before {
+    content: "";
+    border-top: #da7074 solid 1px;
+    position: absolute;
+    width: 100%;
+    top: 2.3rem;
+    left: 0;
+}
+
+/* vertical lines */
+.lines-container::after {
+    content: "";
+    background-image: linear-gradient(#da7074, #da7074),
+                      linear-gradient(#da7074, #da7074);
+    background-repeat: no-repeat;
+    background-size: 1px 90%, 1px 90%;
+    background-position: left top, right bottom;
+    position: absolute;
+    height: 65%;
+    width: 6px;
+    left: calc(50% - 6px/2);
+    top: 35%;
+}
+
+.play-button {
+    background-color: rgba(0, 227, 254, 0);
+    border-radius: 50%;
+    border-style: solid;
+    border-color: #ffffff;
+    border-width: 2px;
+    display: block;
+    font-size: 42px;
+    line-height: 42px;
+    width: 82px;
+    height: 82px;
+    padding-left: 10px;
 }
 
 @media screen and (min-width: 20rem) {
     .module-intro > p {
-      font-size: calc(1.6rem + (2 - 1.6) * ((100vw - 20rem) / (80 - 20)));
-      line-height: calc(2rem + (3.3 - 2) * ((100vw - 20rem) / (80 - 20)));
+        font-size: calc(1.6rem + (2 - 1.6) * ((100vw - 20rem) / (80 - 20)));
+        line-height: calc(2rem + (3.3 - 2) * ((100vw - 20rem) / (80 - 20)));
     }
 }
 
