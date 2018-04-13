@@ -39,3 +39,40 @@ a {
     background-position: top center;
     background-repeat: no-repeat;
 }
+
+.page-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.24);
+}
+
+.top-nav {
+    display: none;
+}
+
+.top-icons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    order: -1;
+}
+
+.module {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card img {
+    width: 100vmin;
+    max-width: 480px;
+    height: auto;
+}
+
+
+.page-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
