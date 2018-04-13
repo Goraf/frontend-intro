@@ -1,0 +1,41 @@
+@import url("../../vendors/fontello/css/font-awesome.css");
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 14px;
+    font-weight: 300;
+    color: #ffffff;
+}
+
+body {
+    background-color: #000000;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.cover-img {
+    background-image: url("images/background.jpg");
+    background-origin: border-box;
+    background-position: top center;
+    background-repeat: no-repeat;
+}
