@@ -244,15 +244,16 @@ a {
 
 @media screen and (min-width: 20rem) {
     .module-intro > p {
-        font-size: calc(1.6rem + (2 - 1.6) * ((100vw - 20rem) / (80 - 20)));
-        line-height: calc(2rem + (3.3 - 2) * ((100vw - 20rem) / (80 - 20)));
+        /* take into account % from html tag */
+        font-size: calc(1.6rem + (2 - 1.6) * 0.625 * ((100vw - 20rem / 0.625) / (80 - 20)));
+        line-height: calc(2rem + (3.4 - 2) * 0.625 * ((100vw - 20rem / 0.625) / (80 - 20)));
     }
 }
 
-@media screen and (min-width: 80em) {
+@media screen and (min-width: 80rem) {
     .module-intro > p {
         font-size: 2rem;
-        line-height: 3.3rem;
+        line-height: 3.4rem;
     }
 }
 
