@@ -269,7 +269,7 @@ a {
 }
 
 .page-footer-item {
-    border-top: 1px solid grey;
+    border-top: 1px solid #808080;
     font-size: 1.6rem;
     line-height: 2.6rem;
     margin-left: 15px;
@@ -327,4 +327,41 @@ a {
     .card img {
         width: 50vw;
     }
+
+    .page-footer-row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    .page-footer-item {
+        border-top: none;
+        margin-bottom: 25px;
+    }
+
+    .page-footer-item ul > li {
+        border-bottom: none;
+    }
+
+    .mission {
+        flex-basis: 100%;
+    }
+
+    .mission p {
+        max-width: 52rem;
+        margin: 0 auto;
+    }
+}
+
+@media screen and (min-width: 1025px) {
+    .mission {
+        flex-basis: 25%;
+    }
+
+    .mission p {
+        display: unset;
+    }
+
 }
