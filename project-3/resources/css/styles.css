@@ -305,6 +305,10 @@ a {
     border-bottom: none;
 }
 
+.page-footer-item ul a {
+    display: block;
+}
+
 .page-footer-item p,
 .page-footer-item a {
     color: #565656;
