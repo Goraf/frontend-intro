@@ -432,3 +432,10 @@ a {
         display: unset;
     }
 }
+
+@media screen and (min-width: 1920px) {
+    .page {
+        width: 1920px;
+        margin: 0 auto;
+    }
+}
