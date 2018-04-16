@@ -159,13 +159,7 @@ a {
     width: 16rem;
     margin: 0 auto;
 }
-/*
-.main-button:hover,
-.main-button:focus {
-    background-color: #ffffff;
-    color: #565656;
-}
-*/
+
 .lines-container {
     position: relative;
     width: 90%;
@@ -386,6 +380,49 @@ a {
     }
 }
 
+@media screen and (min-width: 768px) {
+    .top-nav a:hover {
+        border-bottom: 3px solid #ffffff;
+    }
+
+    .top-nav a:focus {
+        outline: solid 3px #ffffff;
+    }
+
+    .main-button:hover,
+    .main-button:focus {
+        background-color: #ffffff;
+        color: #565656;
+    }
+
+    .play-button {
+        transition-duration: 0.4s;
+    }
+
+    .play-button:hover,
+    .play-button:focus {
+        background-color: #ffffff;
+        color: #565656;
+    }
+
+    .card img {
+        transition-duration: 0.4s;
+    }
+
+    .card:focus img,
+    .card:hover img {
+        opacity: 0.6;
+    }
+
+    .card:hover .title {
+        text-decoration: underline;
+    }
+
+    .page-footer-item a:hover {
+        text-decoration: underline;
+    }
+}
+
 @media screen and (min-width: 1025px) {
     .mission {
         flex-basis: 25%;
@@ -394,5 +431,4 @@ a {
     .mission p {
         display: unset;
     }
-
 }
