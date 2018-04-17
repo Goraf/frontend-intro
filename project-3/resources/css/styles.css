@@ -363,7 +363,7 @@ a {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-around;
-        padding-top: 20px;
+        padding-top: 30px;
         padding-bottom: 20px;
     }
 
@@ -472,6 +472,14 @@ a {
 
     .mission p {
         display: unset;
+    }
+
+    .page-footer-item ul > li {
+        line-height: 3rem;
+    }
+
+    .page-footer-item ul a {
+        display: inline;
     }
 }
 
