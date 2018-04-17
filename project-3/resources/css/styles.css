@@ -130,7 +130,7 @@ a {
 
 .module-intro > .title {
     font-family: 'Playfair Display', serif;
-    font-size: 13vw;
+    font-size: 13.65vw;
     font-weight: 400;
     letter-spacing: normal;
     margin-top: 50px;
@@ -451,6 +451,10 @@ a {
         background-color: rgba(21, 22, 22, 0);
         padding: unset;
         margin-left: 35px;
+    }
+
+    .module-intro > .title {
+        font-size: 140px;
     }
 
     .mission {
