@@ -35,3 +35,7 @@ git clone <url> --branch <branch> --single-branch [<folder>]
 3. (master-3)
 
    Transform webpage from project-2 into responsive one.
+
+4. (master-4)
+
+   Create a simple console program in javascript.
