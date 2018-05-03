@@ -7,8 +7,10 @@ var appModule = (function (window) {
     window.console.warn("Encryption not implemented!");
   }
 
-  function CaesarCipher() {
+  function CaesarCipher(offset) {
     Cipher.call(this, "Caesar cipher");
+
+    this.charOffset = (typeof offset !== 'undefined') ? offset : 3;
   }
 
   CaesarCipher.prototype = Object.create(Cipher.prototype);
@@ -17,16 +19,27 @@ var appModule = (function (window) {
   CaesarCipher.prototype.encryptMsg = function (msg) {
     var encryptedMsg = "";
     var msgCharsCodes = [];
-    var charOffset = 3;
-    var alphabetRange = "Z".charCodeAt() - "A".charCodeAt();
+    var isLowerLatin = false;
+    var isUpperLatin = false;
+    var lowerA_code = "a".charCodeAt();
+    var lowerZ_code = "z".charCodeAt();
+    var upperA_code = "A".charCodeAt();
+    var upperZ_code = "Z".charCodeAt();
+    var alphabetRange = upperZ_code - upperA_code;
+
     for (var i = 0; i < msg.length; i++) {
       msgCharsCodes[i] = msg.charCodeAt(i);
-      var isLowerLatin = msgCharsCodes[i] >= "a".charCodeAt() && msgCharsCodes[i] <= "z".charCodeAt();
-      var isUpperLatin = msgCharsCodes[i] >= "A".charCodeAt() && msgCharsCodes[i] <= "Z".charCodeAt();
+      isLowerLatin = (msgCharsCodes[i] >= lowerA_code) &&
+                     (msgCharsCodes[i] <= lowerZ_code);
+      isUpperLatin = (msgCharsCodes[i] >= upperA_code) &&
+                     (msgCharsCodes[i] <= upperZ_code);
 
       if (isLowerLatin || isUpperLatin) {
-        msgCharsCodes[i] += charOffset;
-        if ((isLowerLatin && msgCharsCodes[i] > "z".charCodeAt()) || (isUpperLatin && msgCharsCodes[i] > "Z".charCodeAt())) {
+        msgCharsCodes[i] += this.charOffset;
+        // loop alphabet
+        if ((isLowerLatin && (msgCharsCodes[i] > lowerZ_code)) ||
+            (isUpperLatin && (msgCharsCodes[i] > upperZ_code)))
+        {
           msgCharsCodes[i] -= alphabetRange + 1;
         }
       }
