@@ -54,7 +54,9 @@ var appModule = (function (window) {
 
   function run() {
     var msg = window.prompt("Write a message you want to encrypt:");
-    msg = msg.trim();
+    if (msg) {
+      msg = msg.trim();
+    }
     if (msg) {
       var cipher = new CaesarCipher();
       msg = cipher.encryptMsg(msg);
