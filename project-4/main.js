@@ -1,4 +1,12 @@
 var appModule = (function (window) {
+  function Cipher(name) {
+    this.cipherName = name;
+  }
+
+  Cipher.prototype.encryptMsg = function (msg) {
+    window.console.warn("Encryption not implemented!");
+  }
+
   // Caesar cipher
   function encryptMsg() {
     var msg = window.prompt("Write a message you want to encrypt:");
