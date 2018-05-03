@@ -14,8 +14,7 @@ var appModule = (function (window) {
   CaesarCipher.prototype = Object.create(Cipher.prototype);
   CaesarCipher.prototype.constructor = CaesarCipher;
 
-  // Caesar cipher
-  function encryptMsg() {
+  CaesarCipher.prototype.encryptMsg = function () {
     var msg = window.prompt("Write a message you want to encrypt:");
     var msgCharsCodes = [];
     var charOffset = 3;
@@ -39,7 +38,8 @@ var appModule = (function (window) {
   }
 
   function run() {
-    encryptMsg();
+    var cipher = new CaesarCipher();
+    cipher.encryptMsg();
   }
 
   return {
