@@ -14,8 +14,8 @@ var appModule = (function (window) {
   CaesarCipher.prototype = Object.create(Cipher.prototype);
   CaesarCipher.prototype.constructor = CaesarCipher;
 
-  CaesarCipher.prototype.encryptMsg = function () {
-    var msg = window.prompt("Write a message you want to encrypt:");
+  CaesarCipher.prototype.encryptMsg = function (msg) {
+    var encryptedMsg = "";
     var msgCharsCodes = [];
     var charOffset = 3;
     var alphabetRange = "Z".charCodeAt() - "A".charCodeAt();
@@ -33,13 +33,22 @@ var appModule = (function (window) {
 
       msgCharsCodes[i] = String.fromCharCode(msgCharsCodes[i]);
     }
-    msg = msgCharsCodes.join("");
-    window.alert("Encrypted message:\n\n" + msg);
+
+    encryptedMsg = msgCharsCodes.join("");
+
+    return encryptedMsg; 
   }
 
   function run() {
-    var cipher = new CaesarCipher();
-    cipher.encryptMsg();
+    var msg = window.prompt("Write a message you want to encrypt:");
+    msg = msg.trim();
+    if (msg) {
+      var cipher = new CaesarCipher();
+      msg = cipher.encryptMsg(msg);
+      window.console.log("Encrypted message: " + msg);
+    } else {
+      window.console.warn("No or empty message provided.");
+    }
   }
 
   return {
