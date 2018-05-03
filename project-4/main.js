@@ -7,6 +7,13 @@ var appModule = (function (window) {
     window.console.warn("Encryption not implemented!");
   }
 
+  function CaesarCipher() {
+    Cipher.call(this, "Caesar cipher");
+  }
+
+  CaesarCipher.prototype = Object.create(Cipher.prototype);
+  CaesarCipher.prototype.constructor = CaesarCipher;
+
   // Caesar cipher
   function encryptMsg() {
     var msg = window.prompt("Write a message you want to encrypt:");
