@@ -4,7 +4,7 @@ var appModule = (function (window) {
   }
 
   Cipher.prototype.encryptMsg = function (msg) {
-    window.console.warn("Encryption not implemented!");
+    window.console.error("Encryption not implemented!");
   }
 
   function CaesarCipher(offset) {
