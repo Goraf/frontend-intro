@@ -38,4 +38,8 @@ git clone <url> --branch <branch> --single-branch [<folder>]
 
 4. (master-4)
 
-   Create a simple console program in javascript.
+   Create a simple console program in javascript (ES5).
+
+5. (master-5)
+
+   Create a simple todo app in javascript which keeps its data in Local Storage.
