@@ -30,6 +30,11 @@ var appModule = (function (window) {
     var input = window.document.getElementById("new-entry");
     var title = input.value.trim();
     if (title) {
+      var isUnique = (data.indexOf(title) === -1);
+      if (!isUnique) {
+        window.alert("Item already exist. Choose a unique name.")
+        return;
+      }
       data.push(title);
       saveData();
       addTodoItem(title);
