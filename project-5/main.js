@@ -66,12 +66,11 @@ var appModule = (function (window) {
 
   function removeTodoItem (event) {
     if (event.target && event.target.nodeName === "BUTTON") {
-      var isConfirmed = window.confirm("Do you really want to delete this item? " +
-                                       "Operation cannot be undone.");
+      var todoItem = event.target.parentNode;
+      var value = todoItem.firstChild.textContent;
+      var isConfirmed = window.confirm("Do you really want to delete: " + value +
+                                       "\nOperation cannot be undone.");
       if (isConfirmed) {
-        var todoItem = event.target.parentNode;
-
-        var value = todoItem.firstChild.textContent;
         var position = data.indexOf(value);
         data.splice(position, 1);
         saveData();
