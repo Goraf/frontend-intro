@@ -2,6 +2,14 @@ var appModule = (function (window) {
   var data = [];
   var todoList = window.document.getElementsByClassName("todo-items-container")[0];
 
+  function loadData() {
+    data = JSON.parse(localStorage.getItem("todoList"));
+
+    for (var i = 0; i < data.length; i++) {
+      addTodoItem(data[i]);
+    }
+  }
+
   function saveData() {
     localStorage.setItem("todoList", JSON.stringify(data));
   }
