@@ -66,14 +66,18 @@ var appModule = (function (window) {
 
   function removeTodoItem (event) {
     if (event.target && event.target.nodeName === "BUTTON") {
-      var todoItem = event.target.parentNode;
+      var isConfirmed = window.confirm("Do you really want to delete this item? " +
+                                       "Operation cannot be undone.");
+      if (isConfirmed) {
+        var todoItem = event.target.parentNode;
 
-      var value = todoItem.firstChild.textContent;
-      var position = data.indexOf(value);
-      data.splice(position, 1);
-      saveData();
+        var value = todoItem.firstChild.textContent;
+        var position = data.indexOf(value);
+        data.splice(position, 1);
+        saveData();
 
-      todoList.removeChild(todoItem);
+        todoList.removeChild(todoItem);
+      }
     }
   }
 
