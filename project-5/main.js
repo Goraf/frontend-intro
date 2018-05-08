@@ -3,10 +3,20 @@ var appModule = (function (window) {
   var todoList = window.document.getElementsByClassName("todo-items-container")[0];
 
   function loadData() {
-    data = JSON.parse(localStorage.getItem("todoList"));
+    if (!localStorage.getItem("todoList")) {
+      window.console.info("loadData: Nothing in storage.");
+      return;
+    }
 
-    for (var i = 0; i < data.length; i++) {
-      addTodoItem(data[i]);
+    data = JSON.parse(localStorage.getItem("todoList"));
+    if (data.length) {
+      for (var i = 0; i < data.length; i++) {
+        addTodoItem(data[i]);
+      }
+      window.console.info("loadData: Data loaded.");
+    }
+    else {
+      window.console.info("loadData: List is empty. Nothing to load.");
     }
   }
 
@@ -63,6 +73,7 @@ var appModule = (function (window) {
   }
 
   function run() {
+    loadData();
     var form = window.document.getElementById("todo-form");
     form.addEventListener("submit", processInput);
 
