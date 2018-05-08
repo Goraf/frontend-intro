@@ -2,6 +2,10 @@ var appModule = (function (window) {
   var data = [];
   var todoList = window.document.getElementsByClassName("todo-items-container")[0];
 
+  function saveData() {
+    localStorage.setItem("todoList", JSON.stringify(data));
+  }
+
   function processInput(event) {
     event.preventDefault();
 
@@ -9,6 +13,7 @@ var appModule = (function (window) {
     var title = input.value.trim();
     if (title) {
       data.push(title);
+      saveData();
       addTodoItem(title);
     }
     else {
@@ -43,6 +48,7 @@ var appModule = (function (window) {
       var value = todoItem.firstChild.textContent;
       var position = data.indexOf(value);
       data.splice(position, 1);
+      saveData();
 
       todoList.removeChild(todoItem);
     }
