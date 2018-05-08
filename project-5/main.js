@@ -74,15 +74,20 @@ var appModule = (function (window) {
 
   function run() {
     loadData();
+
     var form = window.document.getElementById("todo-form");
     form.addEventListener("submit", processInput);
 
     todoList.addEventListener("click", removeTodoItem);
   }
 
+  function setup() {
+    window.document.addEventListener("DOMContentLoaded", run);
+  }
+
   return {
-    run: run
+    setup: setup
   }
 })(window);
 
-appModule.run();
+appModule.setup();
