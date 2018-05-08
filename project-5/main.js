@@ -1,4 +1,5 @@
 var appModule = (function (window) {
+  var data = [];
   var todoList = window.document.getElementsByClassName("todo-items-container")[0];
 
   function processInput(event) {
@@ -7,6 +8,7 @@ var appModule = (function (window) {
     var input = window.document.getElementById("new-entry");
     var title = input.value.trim();
     if (title) {
+      data.push(title);
       addTodoItem(title);
     }
     else {
@@ -35,9 +37,13 @@ var appModule = (function (window) {
   }
 
   function removeTodoItem (event) {
-    var todoItem;
     if (event.target && event.target.nodeName === "BUTTON") {
-      todoItem = event.target.parentNode;
+      var todoItem = event.target.parentNode;
+
+      var value = todoItem.firstChild.textContent;
+      var position = data.indexOf(value);
+      data.splice(position, 1);
+
       todoList.removeChild(todoItem);
     }
   }
