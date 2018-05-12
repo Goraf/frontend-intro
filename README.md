@@ -43,3 +43,7 @@ git clone <url> --branch <branch> --single-branch [<folder>]
 5. (master-5)
 
    Create a simple todo app in javascript which keeps its data in Local Storage.
+
+6. (master-6)
+
+   Create a single-page application displaying average forecast temperature for the next five days for selected cities.
