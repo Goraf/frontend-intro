@@ -4,3 +4,6 @@
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+
+# Node.js dependency directories
+node_modules/
