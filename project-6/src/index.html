@@ -8,6 +8,44 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    
+    <div class="page-container">
+        <header class="page-header">
+            <h1 class="page-header__title">Weather forecast</h1>
+        </header>
+        <main class="page-content">
+            <form class="add-form" id="add-form">
+                <input class="add-form__input" type="text" id="new-entry" placeholder="City Name">
+                <button class="button add-form__button" type="submit">Add</button>
+            </form>
+            <table class="cities-table">
+                <thead class="cities-table-header">
+                    <tr class="cities-table-header-row">
+                        <th class="cities-table-header-cell cities-table-header-cell_col-ID" scope="col">#</th>
+                        <th class="cities-table-header-cell cities-table-header-cell_col-city-name" scope="col">City</th>
+                        <th class="cities-table-header-cell cities-table-header-cell_col-temperature" scope="col">Average forecast temperature</th>
+                        <td class="cities-table-header-cell cities-table-header-cell_col-button"></td>
+                    </tr>
+                </thead>
+                <tbody class="cities-table-body">
+                    <tr class="cities-table-body-row">
+                        <td class="cities-table-body-cell">1</td>
+                        <th class="cities-table-body-cell" scope="row">Gdynia</th>
+                        <td class="cities-table-body-cell">16*C</td>
+                        <td class="cities-table-body-cell">
+                            <button class="button cities-table-body-cell__remove-button">Remove</button>
+                        </td>
+                    </tr>
+                    <tr class="cities-table-body-row">
+                        <td class="cities-table-body-cell">2</td>
+                        <th class="cities-table-body-cell" scope="row">Kraków</th>
+                        <td class="cities-table-body-cell">18*C</td>
+                        <td class="cities-table-body-cell">
+                            <button class="button cities-table-body-cell__remove-button">Remove</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </main>
+    </div>
 </body>
 </html>
