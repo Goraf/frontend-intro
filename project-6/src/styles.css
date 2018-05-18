@@ -6,9 +6,146 @@
 
 html {
     font-family: Arial, sans-serif;
-    color: #111111;
+    color: #1a1a1a;
 }
 
 body {
     background-color: #f9f9f9;
+}
+
+.button {
+    border-radius: 5px;
+    font-size: inherit;
+    text-align: center;
+    cursor: pointer;
+}
+
+.button:focus,
+.button:hover {
+    outline: none;
+}
+
+.page-container {
+    margin: 0 auto;
+    width: 100vw;
+}
+
+.page-header {
+    padding: 10px;
+}
+
+.page-header__title {
+    text-align: center;
+}
+
+.add-form {
+    border-bottom: 1px solid #dbdbdb;
+    display: flex;
+    justify-content: space-between;
+    margin: 10px auto;
+    padding: 15px;
+}
+
+.add-form__input {
+    border: 1px solid #0080f9;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: inherit;
+    flex-grow: 1;
+    padding: 10px;
+
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.add-form__input:focus,
+.add-form__input:hover {
+    box-shadow: 0px 0px 10px 0px #0080f9;
+    outline: none;
+}
+
+.add-form__button {
+    border: 1px solid #016acc;
+    background-color: #0071da;
+    color: #ffffff;
+    padding: 10px;
+    margin-left: 15px;
+    width: 150px;
+}
+
+.add-form__button:focus,
+.add-form__button:hover {
+    border: 1px solid #00529e;
+    box-shadow: 0px 0px 10px 3px #0080f9;
+}
+
+.cities-table {
+    table-layout: fixed;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.cities-table-header-row {
+    border-bottom: 2px solid #dbdbdb;
+}
+
+.cities-table-header-cell {
+    padding: 10px;
+    vertical-align: bottom;
+}
+
+.cities-table-header-cell_col-ID {
+    width: 10%;
+}
+
+.cities-table-header-cell_col-temperature {
+    text-align: left;
+}
+
+.cities-table-body-row {
+    border-top: 1px solid #dbdbdb;
+}
+
+.cities-table-body-row:hover {
+    background-color: #ececec;
+    background: linear-gradient(to bottom, #f9f9f9 0%, #f6f6f6 47%, #dbdbdb 95%);
+}
+
+.cities-table-body-cell {
+    padding: 10px;
+    vertical-align: top;
+}
+
+.cities-table-header-cell_col-ID,
+.cities-table-body-cell_col-ID {
+    text-align: right;
+}
+
+.cities-table-body-cell_col-button {
+    text-align: right;
+}
+
+.cities-table-body-cell__remove-button {
+    background-color: #f9f9f980;
+    border: 1px solid #e14a59;
+    color: #cc1d2f;
+    padding: 8px 15px;
+    transition-duration: 0.3s;
+}
+
+.cities-table-body-cell__remove-button:focus,
+.cities-table-body-cell__remove-button:hover {
+    box-shadow: 0px 0px 10px 1px #e14a59;
+}
+
+.cities-table-body-cell__remove-button:active {
+    color: #ffffff;
+    background-color: #e14a59;
+    box-shadow: none;
+}
+
+@media screen and (min-width: 600px) {
+    .page-container {
+        width: 600px;
+    }
 }
