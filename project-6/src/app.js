@@ -1,5 +1,9 @@
 class WeatherApp {
   constructor() {
+    this.data = {
+      cities: []
+    }
+
     this.cityEntriesContainer = document.getElementsByClassName("cities-table-body")[0];
     this.cityNameInput = document.getElementById("new-entry");
 
@@ -58,6 +62,10 @@ class WeatherApp {
       const isConfirmed = confirm("Do you really want to delete: " + cityName +
                                   "\nOperation cannot be undone.");
       if (isConfirmed) {
+        const position = this.data.cities.findIndex(x => x === cityName);
+        this.data.cities.splice(position, 1);
+        console.table(this.data.cities);
+
         this.cityEntriesContainer.removeChild(cityEntry);
       }
     }
@@ -68,6 +76,13 @@ class WeatherApp {
 
     const cityName = this.cityNameInput.value.trim();
     if (cityName) {
+      const isUnique = this.data.cities.findIndex(x => x === cityName);
+      if (!isUnique) {
+        alert("The city is already on the list.")
+        return;
+      }
+      this.data.cities.push(cityName);
+      console.table(this.data.cities);
       this.addCityEntry(cityName);
     }
     else {
