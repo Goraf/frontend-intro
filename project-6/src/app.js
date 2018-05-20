@@ -1,6 +1,48 @@
 class WeatherApp {
   constructor() {
-    console.log("Created");
+    this.cityEntriesContainer = document.getElementsByClassName("cities-table-body")[0];
+    this.addCityEntry();
+  }
+
+  addCityEntry(cityName = "unknown") {
+    const rowStyleClass = "cities-table-body-row";
+    const cellStyleClass = "cities-table-body-cell";
+
+    let cityEntry = document.createElement("tr");
+    cityEntry.classList.add(rowStyleClass);
+
+    let cellID = document.createElement("td");
+    cellID.classList.add(cellStyleClass);
+    cellID.classList.add("cities-table-body-cell_col-ID");
+    cellID.textContent = "X";
+
+    let cellCityName = document.createElement("th");
+    cellCityName.classList.add(cellStyleClass);
+    cellCityName.classList.add("cities-table-body-cell_col-city-name");
+    cellCityName.scope = "row";
+    cellCityName.textContent = cityName;
+
+    let cellTemperature = document.createElement("td");
+    cellTemperature.classList.add(cellStyleClass);
+    cellTemperature.classList.add("cities-table-body-cell_col-temperature");
+    cellTemperature.textContent = "C";
+
+    let cellButton = document.createElement("td");
+    cellButton.classList.add(cellStyleClass);
+    cellButton.classList.add("cities-table-body-cell_col-button");
+
+    let removeBtn = document.createElement("button");
+    removeBtn.classList.add("button", "cities-table-body-cell__remove-button");
+    removeBtn.textContent = "Remove";
+
+    cellButton.appendChild(removeBtn);
+
+    cityEntry.appendChild(cellID);
+    cityEntry.appendChild(cellCityName);
+    cityEntry.appendChild(cellTemperature);
+    cityEntry.appendChild(cellButton);
+
+    this.cityEntriesContainer.appendChild(cityEntry);
   }
 }
 
