@@ -24,6 +24,7 @@ class WeatherApp {
       for (let i = 0; i < this.data.cities.length; i++) {
         this.addCityEntry(this.data.cities[i]);
       }
+      this.updateColumnIDNumbers();
       console.info("initData: Data loaded.");
     }
     else {
@@ -84,7 +85,15 @@ class WeatherApp {
         this.data.cities.splice(position, 1);
         storage.saveData("data", this.data);
         this.cityEntriesContainer.removeChild(cityEntry);
+        this.updateColumnIDNumbers();
       }
+    }
+  }
+
+  updateColumnIDNumbers () {
+    const cells = document.querySelectorAll(".cities-table-body .cities-table-body-cell_col-ID");
+    for (let i = 0; i < cells.length; i++) {
+      cells[i].textContent = i + 1;
     }
   }
 
@@ -101,6 +110,7 @@ class WeatherApp {
       this.data.cities.push(cityName);
       storage.saveData("data", this.data);
       this.addCityEntry(cityName);
+      this.updateColumnIDNumbers();
     }
     else {
       window.alert("Input cannot be empty.")
