@@ -1,9 +1,8 @@
+import * as storage from "./lib/storage.js";
+
 class WeatherApp {
   constructor() {
-    this.data = {
-      cities: []
-    }
-
+    this.data = {};
     this.cityEntriesContainer = document.getElementsByClassName("cities-table-body")[0];
     this.cityNameInput = document.getElementById("new-entry");
 
@@ -11,6 +10,25 @@ class WeatherApp {
     form.addEventListener("submit", e => this.processInput(e));
 
     this.cityEntriesContainer.addEventListener("click", e => this.removeCityEntry(e));
+    this.initData();
+  }
+
+  initData() {
+    this.data = storage.loadData("data");
+    if (!this.data) {
+      this.data = {
+        cities: []
+      };
+    }
+    else if (this.data.cities.length) {
+      for (let i = 0; i < this.data.cities.length; i++) {
+        this.addCityEntry(this.data.cities[i]);
+      }
+      console.info("initData: Data loaded.");
+    }
+    else {
+      console.info("initData: List is empty. Nothing to load.");
+    }
   }
 
   addCityEntry(cityName = "unknown") {
@@ -64,8 +82,7 @@ class WeatherApp {
       if (isConfirmed) {
         const position = this.data.cities.findIndex(x => x === cityName);
         this.data.cities.splice(position, 1);
-        console.table(this.data.cities);
-
+        storage.saveData("data", this.data);
         this.cityEntriesContainer.removeChild(cityEntry);
       }
     }
@@ -82,7 +99,7 @@ class WeatherApp {
         return;
       }
       this.data.cities.push(cityName);
-      console.table(this.data.cities);
+      storage.saveData("data", this.data);
       this.addCityEntry(cityName);
     }
     else {
