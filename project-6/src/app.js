@@ -1,7 +1,10 @@
 class WeatherApp {
   constructor() {
     this.cityEntriesContainer = document.getElementsByClassName("cities-table-body")[0];
-    this.addCityEntry();
+    this.cityNameInput = document.getElementById("new-entry");
+
+    const form = document.getElementById("add-form");
+    form.addEventListener("submit", e => this.processInput(e));
   }
 
   addCityEntry(cityName = "unknown") {
@@ -43,6 +46,20 @@ class WeatherApp {
     cityEntry.appendChild(cellButton);
 
     this.cityEntriesContainer.appendChild(cityEntry);
+  }
+
+  processInput(event) {
+    event.preventDefault();
+
+    const cityName = this.cityNameInput.value.trim();
+    if (cityName) {
+      this.addCityEntry(cityName);
+    }
+    else {
+      window.alert("Input cannot be empty.")
+    }
+
+    this.cityNameInput.value = "";
   }
 }
 
