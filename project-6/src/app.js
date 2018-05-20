@@ -1,1 +1,7 @@
-let test = () => console.log(123);
+class WeatherApp {
+  constructor() {
+    console.log("Created");
+  }
+}
+
+window.addEventListener("DOMContentLoaded", () => new WeatherApp());
