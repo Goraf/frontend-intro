@@ -5,6 +5,8 @@ class WeatherApp {
 
     const form = document.getElementById("add-form");
     form.addEventListener("submit", e => this.processInput(e));
+
+    this.cityEntriesContainer.addEventListener("click", e => this.removeCityEntry(e));
   }
 
   addCityEntry(cityName = "unknown") {
@@ -46,6 +48,19 @@ class WeatherApp {
     cityEntry.appendChild(cellButton);
 
     this.cityEntriesContainer.appendChild(cityEntry);
+  }
+
+  removeCityEntry (event) {
+    if (event.target && event.target.matches(".cities-table-body-cell__remove-button")) {
+      const cityEntry = event.target.closest(".cities-table-body-row");
+      const cityName = cityEntry.querySelector(".cities-table-body-cell_col-city-name").textContent;
+
+      const isConfirmed = confirm("Do you really want to delete: " + cityName +
+                                  "\nOperation cannot be undone.");
+      if (isConfirmed) {
+        this.cityEntriesContainer.removeChild(cityEntry);
+      }
+    }
   }
 
   processInput(event) {
