@@ -23,6 +23,7 @@ module.exports = {
       }
     ]
   },
+  devtool: "eval-source-map",
   plugins: [
     new HtmlWebpackPlugin({
       filename: "index.html",
