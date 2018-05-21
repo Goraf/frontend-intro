@@ -10,7 +10,8 @@ const makeRequest = (requestUrl, method = "GET") => {
         resolve(request.responseText);
       }
       else {
-        reject(Error(request.statusText));
+        const errorMsg = "Status: " + request.status + " " + "Response: " + request.statusText;
+        reject(Error(errorMsg));
       }
     };
 
