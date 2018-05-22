@@ -106,15 +106,15 @@ class WeatherApp {
     if (cityName) {
       const isUnique = this.data.cities.findIndex(x => x === cityName);
       if (!isUnique) {
-        alert("The city is already on the list.")
+        alert("The city is already on the list.");
         return;
       }
 
       let averageTemp;
       search(cityName).then(weatherInfo => {
         if (!weatherInfo) {
-          alert("Couldn't find/add the city. Check its name or your internet connection");
-          return;
+          alert("Couldn't find/add the city. Check its name or your internet connection.");
+          throw new Error("Connection/request error");
         }
 
         let temperatures = [];
