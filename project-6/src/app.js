@@ -24,7 +24,8 @@ class WeatherApp {
     }
     else if (this.data.cities.length) {
       for (let i = 0; i < this.data.cities.length; i++) {
-        this.addCityEntry(this.data.cities[i]);
+        const city = this.data.cities[i];
+        this.addCityEntry(city);
       }
       this.updateColumnIDNumbers();
       console.info("initData: Data loaded.");
@@ -34,7 +35,7 @@ class WeatherApp {
     }
   }
 
-  addCityEntry(cityName = "unknown", avgTemp = "") {
+  addCityEntry({name = "unknown", avgTemp = ""}) {
     const rowStyleClass = "cities-table-body-row";
     const cellStyleClass = "cities-table-body-cell";
 
@@ -50,7 +51,7 @@ class WeatherApp {
     cellCityName.classList.add(cellStyleClass);
     cellCityName.classList.add("cities-table-body-cell_col-city-name");
     cellCityName.scope = "row";
-    cellCityName.textContent = cityName;
+    cellCityName.textContent = name;
 
     const cellTemperature = document.createElement("td");
     cellTemperature.classList.add(cellStyleClass);
@@ -83,7 +84,7 @@ class WeatherApp {
       const isConfirmed = confirm("Do you really want to delete: " + cityName +
                                   "\nOperation cannot be undone.");
       if (isConfirmed) {
-        const position = this.data.cities.findIndex(x => x === cityName);
+        const position = this.data.cities.findIndex(x => x.name === cityName);
         this.data.cities.splice(position, 1);
         storage.saveData("data", this.data);
         this.cityEntriesContainer.removeChild(cityEntry);
@@ -104,18 +105,19 @@ class WeatherApp {
 
     const cityName = this.cityNameInput.value.trim();
     if (cityName) {
-      const isUnique = this.data.cities.findIndex(x => x === cityName);
+      const isUnique = this.data.cities.findIndex(x => x.name === cityName);
       if (!isUnique) {
         alert("The city is already on the list.");
         return;
       }
 
-      let averageTemp;
       search(cityName).then(weatherInfo => {
         if (!weatherInfo) {
           alert("Couldn't find/add the city. Check its name or your internet connection.");
           throw new Error("Connection/request error");
         }
+        // deep clone object
+        const city = JSON.parse(JSON.stringify(weatherInfo.city));
 
         let temperatures = [];
         const list = weatherInfo.list;
@@ -130,12 +132,14 @@ class WeatherApp {
             }
           }
         }
-        averageTemp = math.averageFromArrayFixed(temperatures);
-        console.log(averageTemp);
-      }).then( () => {
-        this.data.cities.push(cityName);
+        const averageTemp = math.averageFromArrayFixed(temperatures);
+
+        city.avgTemp = averageTemp ? averageTemp : "";
+        return city;
+      }).then((city) => {
+        this.data.cities.push(city);
         storage.saveData("data", this.data);
-        this.addCityEntry(cityName, averageTemp);
+        this.addCityEntry(city);
         this.updateColumnIDNumbers();
       }).catch((error) => {
         console.error(error);
