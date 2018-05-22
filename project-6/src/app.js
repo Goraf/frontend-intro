@@ -1,4 +1,6 @@
 import * as storage from "./lib/storage.js";
+import * as math from "./lib/math";
+import { cityForecast5SearchByName as search } from "./lib/client-open-weather";
 
 class WeatherApp {
   constructor() {
@@ -32,7 +34,7 @@ class WeatherApp {
     }
   }
 
-  addCityEntry(cityName = "unknown") {
+  addCityEntry(cityName = "unknown", avgTemp = "") {
     const rowStyleClass = "cities-table-body-row";
     const cellStyleClass = "cities-table-body-cell";
 
@@ -53,7 +55,7 @@ class WeatherApp {
     const cellTemperature = document.createElement("td");
     cellTemperature.classList.add(cellStyleClass);
     cellTemperature.classList.add("cities-table-body-cell_col-temperature");
-    cellTemperature.textContent = "C";
+    cellTemperature.textContent = avgTemp + " ℃";
 
     const cellButton = document.createElement("td");
     cellButton.classList.add(cellStyleClass);
@@ -107,10 +109,37 @@ class WeatherApp {
         alert("The city is already on the list.")
         return;
       }
-      this.data.cities.push(cityName);
-      storage.saveData("data", this.data);
-      this.addCityEntry(cityName);
-      this.updateColumnIDNumbers();
+
+      let averageTemp;
+      search(cityName).then(weatherInfo => {
+        if (!weatherInfo) {
+          alert("Couldn't find/add the city. Check its name or your internet connection");
+          return;
+        }
+
+        let temperatures = [];
+        const list = weatherInfo.list;
+        for (let i = 0; i < list.length; i++) {
+          const measurementDate = new Date(list[i].dt * 1000);
+          const hourOfData = measurementDate.getUTCHours();
+          const isDaytime = ((hourOfData >= 8) && (hourOfData <= 19));
+          if (isDaytime) {
+            let temp = list[i].main.temp;
+            if ((typeof temp === "number") && (!Number.isNaN(temp))) {
+              temperatures.push(temp);
+            }
+          }
+        }
+        averageTemp = math.averageFromArrayFixed(temperatures);
+        console.log(averageTemp);
+      }).then( () => {
+        this.data.cities.push(cityName);
+        storage.saveData("data", this.data);
+        this.addCityEntry(cityName, averageTemp);
+        this.updateColumnIDNumbers();
+      }).catch((error) => {
+        console.error(error);
+      })
     }
     else {
       window.alert("Input cannot be empty.")
