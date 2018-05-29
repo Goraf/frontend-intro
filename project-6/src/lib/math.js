@@ -4,7 +4,7 @@ function averageFromArray(array) {
   }
 
   let nominator = 0;
-  for (let i = 0; i < array.length; i++) {
+  for (let i = 0, j = array.length; i < j; i++) {
     nominator += array[i];
   }
 

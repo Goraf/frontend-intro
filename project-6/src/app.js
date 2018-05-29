@@ -23,7 +23,8 @@ class WeatherApp {
       };
     }
     else if (this.data.cities.length) {
-      for (let i = 0; i < this.data.cities.length; i++) {
+      let length = this.data.cities.length;
+      for (let i = 0; i < length; i++) {
         const city = this.data.cities[i];
         this.addCityEntry(city);
       }
@@ -95,7 +96,7 @@ class WeatherApp {
 
   updateColumnIDNumbers () {
     const cells = document.querySelectorAll(".cities-table-body .cities-table-body-cell_col-ID");
-    for (let i = 0; i < cells.length; i++) {
+    for (let i = 0, j = cells.length; i < j; i++) {
       cells[i].textContent = i + 1;
     }
   }
@@ -121,7 +122,7 @@ class WeatherApp {
 
         let temperatures = [];
         const list = weatherInfo.list;
-        for (let i = 0; i < list.length; i++) {
+        for (let i = 0, j = list.length; i < j; i++) {
           const measurementDate = new Date(list[i].dt * 1000);
           const hourOfData = measurementDate.getUTCHours();
           const isDaytime = ((hourOfData >= 8) && (hourOfData <= 19));
