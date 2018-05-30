@@ -1,4 +1,4 @@
-import * as storage from "./lib/storage.js";
+import * as storage from "./lib/storage";
 import * as math from "./lib/math";
 import { cityForecast5SearchByName as search } from "./lib/client-open-weather";
 
