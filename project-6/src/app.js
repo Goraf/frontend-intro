@@ -118,6 +118,7 @@ class WeatherApp {
           throw new Error("Connection/request error");
         }
         // deep clone object
+        weatherInfo = JSON.parse(weatherInfo);
         const city = JSON.parse(JSON.stringify(weatherInfo.city));
 
         let temperatures = [];
