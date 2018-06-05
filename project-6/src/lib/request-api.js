@@ -1,5 +1,13 @@
 // 
 
+class HttpError extends Error {
+  constructor(response) {
+    super(`${response.status} for ${response.url}`);
+    this.name = 'HttpError';
+    this.response = response;
+  }
+}
+
 const makeRequest = (requestUrl, method = "GET") => {
   return new Promise((resolve, reject) => {
     const request = new XMLHttpRequest();
@@ -10,17 +18,16 @@ const makeRequest = (requestUrl, method = "GET") => {
         resolve(request.responseText);
       }
       else {
-        const errorMsg = "Status: " + request.status + " " + "Response: " + request.statusText;
-        reject(Error(errorMsg));
+        reject(new HttpError(request));
       }
     };
 
     request.onerror = () => {
-      reject(Error("Network error."));
+      reject(new HttpError(request));
     };
 
     request.send();
   });
 }
 
-export {makeRequest};
+export { HttpError, makeRequest };
