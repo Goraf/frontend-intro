@@ -1,6 +1,7 @@
 import * as storage from "./lib/storage";
 import * as math from "./lib/math";
 import { cityForecast5SearchByName as search } from "./lib/client-open-weather";
+import { HttpError } from "./lib/request-api";
 
 class WeatherApp {
   constructor() {
@@ -105,53 +106,75 @@ class WeatherApp {
     event.preventDefault();
 
     const cityName = this.cityNameInput.value.trim();
-    if (cityName) {
-      const isUnique = this.data.cities.findIndex(x => x.name === cityName);
-      if (!isUnique) {
-        alert("The city is already on the list.");
-        return;
-      }
+    if (!cityName) {
+      window.alert("Input cannot be empty.");
+      this.cityNameInput.value = "";
+      return;
+    }
 
-      search(cityName).then(weatherInfo => {
-        if (!weatherInfo) {
-          alert("Couldn't find/add the city. Check its name or your internet connection.");
-          throw new Error("Connection/request error");
-        }
+    search(cityName).then(response => {
+      const weatherInfo = JSON.parse(response);
+
+      const index = this.data.cities.findIndex(x => x.id === weatherInfo.city.id);
+      const isUnique = (index === -1);
+      if (!isUnique) {
+        alert(`The city is already on the list. Look at position ${index + 1}.`);
+      }
+      else {
         // deep clone object
-        weatherInfo = JSON.parse(weatherInfo);
         const city = JSON.parse(JSON.stringify(weatherInfo.city));
 
-        let temperatures = [];
-        const list = weatherInfo.list;
-        for (let i = 0, j = list.length; i < j; i++) {
-          const measurementDate = new Date(list[i].dt * 1000);
-          const hourOfData = measurementDate.getUTCHours();
-          const isDaytime = ((hourOfData >= 8) && (hourOfData <= 19));
-          if (isDaytime) {
-            let temp = list[i].main.temp;
-            if ((typeof temp === "number") && (!Number.isNaN(temp))) {
-              temperatures.push(temp);
-            }
-          }
-        }
-        const averageTemp = math.averageFromArrayFixed(temperatures);
+        const parameters = this.calculateWeatherParameters(weatherInfo.list);
+        Object.assign(city, parameters);
 
-        city.avgTemp = averageTemp ? averageTemp : "";
-        return city;
-      }).then((city) => {
         this.data.cities.push(city);
         storage.saveData("data", this.data);
         this.addCityEntry(city);
         this.updateColumnIDNumbers();
-      }).catch((error) => {
-        console.error(error);
-      })
-    }
-    else {
-      window.alert("Input cannot be empty.")
-    }
+      }
 
-    this.cityNameInput.value = "";
+      this.cityNameInput.value = "";
+    }).catch((err) => {
+      if (err instanceof HttpError) {
+        switch (err.response.status) {
+          case 0:
+            alert("Network error. Check your Internet settings/connection or try again later.");
+            break;
+        
+          case 404:
+            alert("No such city found. Check provided name and try again.");
+            break;
+        
+          default:
+            alert("Problem with server. Try again later.");
+            break;
+        }
+      }
+      else {
+        console.error(err);
+      }
+    })
+  }
+
+  calculateWeatherParameters(weatherData) {
+    const weatherParameters = {};
+    let temperatures = [];
+
+    for (let i = 0, j = weatherData.length; i < j; i++) {
+      const measurementDate = new Date(weatherData[i].dt * 1000);
+      const hourOfData = measurementDate.getUTCHours();
+      const isDaytime = ((hourOfData >= 8) && (hourOfData <= 19));
+      if (isDaytime) {
+        let temp = weatherData[i].main.temp;
+        if ((typeof temp === "number") && (!Number.isNaN(temp))) {
+          temperatures.push(temp);
+        }
+      }
+    }
+    const averageTemp = math.averageFromArrayFixed(temperatures);
+    weatherParameters.avgTemp = averageTemp ? averageTemp : "";
+
+    return weatherParameters;
   }
 }
 
