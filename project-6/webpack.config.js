@@ -18,7 +18,8 @@ module.exports = {
         exclude: /node_modules/,
         loader: "babel-loader",
         options: {
-          presets: ["env"]
+          presets: ["env"],
+          plugins: [["babel-plugin-transform-builtin-extend", {"globals": ["Error"]}]]
         }
       }
     ]
