@@ -10,4 +10,10 @@ function cityForecast5SearchByName(searchedCity) {
   return makeRequest(url);
 }
 
-export { cityForecast5SearchByName };
+function cityForecast5SearchById(cityId) {
+  const url = `${_serverAddress}forecast?id=${cityId}&units=metric&APPID=${API_KEY}`;
+
+  return makeRequest(url);
+}
+
+export { cityForecast5SearchByName, cityForecast5SearchById };
