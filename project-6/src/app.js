@@ -1,6 +1,6 @@
 import * as math from "./lib/math";
 import * as storage from "./lib/storage";
-import { cityForecast5SearchByName as search } from "./lib/client-open-weather";
+import { cityForecast5SearchById, cityForecast5SearchByName as search } from "./lib/client-open-weather";
 import { HttpError } from "./lib/request-api";
 
 class WeatherApp {
@@ -33,6 +33,8 @@ class WeatherApp {
     } else {
       console.info("initData: List is empty. Nothing to load.");
     }
+
+    this.requestWeatherData();
   }
 
   addCityEntry({ name = "unknown", avgTemp = "" }) {
@@ -170,6 +172,24 @@ class WeatherApp {
     weatherParameters.avgTemp = averageTemp ? averageTemp : "";
 
     return weatherParameters;
+  }
+
+  requestWeatherData() {
+    Promise.all(this.data.cities.map((city) => {
+      return cityForecast5SearchById(city.id);
+    })).then((arrayOfResponses) => {
+      arrayOfResponses.forEach((response, index) => {
+        try {
+          const weatherInfo = JSON.parse(response);
+          const parameters = this.calculateWeatherParameters(weatherInfo.list);
+
+          this.data.cities[index].avgTemp = parameters.avgTemp;
+        } catch (error) {
+          console.error(error);
+        }
+      });
+      storage.saveData("data", this.data);
+    });
   }
 }
 
