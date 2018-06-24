@@ -4,11 +4,12 @@ function averageFromArray(array) {
   }
 
   let nominator = 0;
+
   for (let i = 0, j = array.length; i < j; i++) {
     nominator += array[i];
   }
 
-  return nominator/array.length;
+  return nominator / array.length;
 }
 
 function averageFromArrayFixed(array, digits = 1) {
@@ -19,4 +20,4 @@ function averageFromArrayFixed(array, digits = 1) {
   return averageFromArray(array).toFixed(digits);
 }
 
-export {averageFromArray, averageFromArrayFixed};
+export { averageFromArray, averageFromArrayFixed };

@@ -1,12 +1,12 @@
-import * as storage from "./lib/storage";
 import * as math from "./lib/math";
+import * as storage from "./lib/storage";
 import { cityForecast5SearchByName as search } from "./lib/client-open-weather";
 import { HttpError } from "./lib/request-api";
 
 class WeatherApp {
   constructor() {
     this.data = {};
-    this.cityEntriesContainer = document.getElementsByClassName("cities-table-body")[0];
+    [this.cityEntriesContainer] = document.getElementsByClassName("cities-table-body");
     this.cityNameInput = document.getElementById("new-entry");
 
     const form = document.getElementById("add-form");
@@ -20,24 +20,22 @@ class WeatherApp {
     this.data = storage.loadData("data");
     if (!this.data) {
       this.data = {
-        cities: []
+        cities: [],
       };
-    }
-    else if (this.data.cities.length) {
-      let length = this.data.cities.length;
+    } else if (this.data.cities.length) {
+      const length = this.data.cities.length;
       for (let i = 0; i < length; i++) {
         const city = this.data.cities[i];
         this.addCityEntry(city);
       }
       this.updateColumnIDNumbers();
       console.info("initData: Data loaded.");
-    }
-    else {
+    } else {
       console.info("initData: List is empty. Nothing to load.");
     }
   }
 
-  addCityEntry({name = "unknown", avgTemp = ""}) {
+  addCityEntry({ name = "unknown", avgTemp = "" }) {
     const rowStyleClass = "cities-table-body-row";
     const cellStyleClass = "cities-table-body-cell";
 
@@ -58,7 +56,7 @@ class WeatherApp {
     const cellTemperature = document.createElement("td");
     cellTemperature.classList.add(cellStyleClass);
     cellTemperature.classList.add("cities-table-body-cell_col-temperature");
-    cellTemperature.textContent = avgTemp + " ℃";
+    cellTemperature.textContent = `${avgTemp} ℃`;
 
     const cellButton = document.createElement("td");
     cellButton.classList.add(cellStyleClass);
@@ -78,13 +76,12 @@ class WeatherApp {
     this.cityEntriesContainer.appendChild(cityEntry);
   }
 
-  removeCityEntry (event) {
+  removeCityEntry(event) {
     if (event.target && event.target.matches(".cities-table-body-cell__remove-button")) {
       const cityEntry = event.target.closest(".cities-table-body-row");
       const cityName = cityEntry.querySelector(".cities-table-body-cell_col-city-name").textContent;
 
-      const isConfirmed = confirm("Do you really want to delete: " + cityName +
-                                  "\nOperation cannot be undone.");
+      const isConfirmed = window.confirm(`Do you really want to delete: ${cityName}\nOperation cannot be undone.`);
       if (isConfirmed) {
         const position = this.data.cities.findIndex(x => x.name === cityName);
         this.data.cities.splice(position, 1);
@@ -95,7 +92,7 @@ class WeatherApp {
     }
   }
 
-  updateColumnIDNumbers () {
+  updateColumnIDNumbers() {
     const cells = document.querySelectorAll(".cities-table-body .cities-table-body-cell_col-ID");
     for (let i = 0, j = cells.length; i < j; i++) {
       cells[i].textContent = i + 1;
@@ -112,15 +109,14 @@ class WeatherApp {
       return;
     }
 
-    search(cityName).then(response => {
+    search(cityName).then((response) => {
       const weatherInfo = JSON.parse(response);
 
       const index = this.data.cities.findIndex(x => x.id === weatherInfo.city.id);
       const isUnique = (index === -1);
       if (!isUnique) {
-        alert(`The city is already on the list. Look at position ${index + 1}.`);
-      }
-      else {
+        window.alert(`The city is already on the list. Look at position ${index + 1}.`);
+      } else {
         // deep clone object
         const city = JSON.parse(JSON.stringify(weatherInfo.city));
 
@@ -138,35 +134,34 @@ class WeatherApp {
       if (err instanceof HttpError) {
         switch (err.response.status) {
           case 0:
-            alert("Network error. Check your Internet settings/connection or try again later.");
+            window.alert("Network error. Check your Internet settings/connection or try again later.");
             break;
-        
+
           case 404:
-            alert("No such city found. Check provided name and try again.");
+            window.alert("No such city found. Check provided name and try again.");
             break;
-        
+
           default:
-            alert("Problem with server. Try again later.");
+            window.alert("Problem with server. Try again later.");
             break;
         }
-      }
-      else {
+      } else {
         console.error(err);
       }
-    })
+    });
   }
 
   calculateWeatherParameters(weatherData) {
     const weatherParameters = {};
-    let temperatures = [];
+    const temperatures = [];
 
     for (let i = 0, j = weatherData.length; i < j; i++) {
       const measurementDate = new Date(weatherData[i].dt * 1000);
       const hourOfData = measurementDate.getUTCHours();
-      const isDaytime = ((hourOfData >= 8) && (hourOfData <= 19));
+      const isDaytime = (hourOfData >= 8) && (hourOfData <= 19);
       if (isDaytime) {
-        let temp = weatherData[i].main.temp;
-        if ((typeof temp === "number") && (!Number.isNaN(temp))) {
+        const temp = weatherData[i].main.temp;
+        if ((typeof temp === "number") && !Number.isNaN(temp)) {
           temperatures.push(temp);
         }
       }

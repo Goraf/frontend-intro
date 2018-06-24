@@ -2,31 +2,30 @@
 
 /**
  * Loads data from localStorage
- * @param {string} key 
+ * @param {string} key
  */
 function loadData(key) {
   if (typeof key !== "string") {
     console.warn("loadData: wrong type of parameter");
+
     return;
   }
 
-  const item = localStorage.getItem(key)
+  const item = localStorage.getItem(key);
   if (!item) {
-    console.info("loadData: Key \"" + key + "\" does not exist in localStorage. Nothing to load.");
-    return;
-  }
-  else {
+    console.info(`loadData: Key "${key}" does not exist in localStorage. Nothing to load.`);
+  } else {
     return JSON.parse(item);
   }
 }
 
 /**
  * Saves data to localStorage
- * @param {string} key 
- * @param {*} value 
+ * @param {string} key
+ * @param {*} value
  */
 function saveData(key, value) {
   localStorage.setItem(key, JSON.stringify(value));
 }
 
-export {loadData, saveData};
+export { loadData, saveData };
